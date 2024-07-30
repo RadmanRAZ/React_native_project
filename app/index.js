@@ -6,7 +6,7 @@ import {Nearbyjobs , Popularjobs , ScreenHeaderBtn , Welcome} from '../component
 
 const Home = ()=>{
     const router = useRouter();
-    return(
+    return( 
         <SafeAreaView style = {{flex : 1 , backgroundColor : COLORS.lightWhite}}>
             <Stack.Screen
                 options={{
@@ -17,10 +17,23 @@ const Home = ()=>{
                         <ScreenHeaderBtn iconUrl = {icons.menu} dimention = "60%"  />
                     ),
                     headerRight : ()=>(
-                        <ScreenHeaderBtn iconUrl = {icons.profile} dimention = "100%" />
+                        <ScreenHeaderBtn iconUrl = {images.profile} dimention = "100%" />
                     )
                 }}
             />
+            <ScrollView showsVerticalScrollIndicator = {false}>
+                <View
+                    style = {{
+                        flex : 1,
+                        padding : SIZES.medium
+                    }}                
+                    
+                >
+                    <Welcome/>
+                    <Popularjobs/>
+                    <Nearbyjobs/>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
