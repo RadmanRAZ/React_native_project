@@ -12,7 +12,7 @@ const Popularjobs = () => {
 
 
   const {data , isLoading , error } = useFetch(
-    'search' , {query : "React developer" , page_num : 1}
+    'search' , {query : "Python developer" , page_num : 1}
   )
 
   console.log(data.data)
