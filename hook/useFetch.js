@@ -13,7 +13,7 @@ const useFetch = (endpoint, query) => {
       'x-rapidapi-key': 'c3342785e1mshea2265130cd9055p1ead15jsnfd9b17de9824',
       'x-rapidapi-host': 'jsearch.p.rapidapi.com',
     },
-    params: query
+    params: query 
   };
 
   const fetchData = async () => {

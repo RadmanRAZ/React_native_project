@@ -6,6 +6,7 @@ import { COLORS , icons , SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch'
 import styles from '../../components/common/header/screenheader.style'
 import { ScrollView } from 'react-native-gesture-handler'
+import About from '../../components/jobdetails/about/About'
 
 
 const jobDetale = () => {
@@ -17,13 +18,42 @@ const jobDetale = () => {
     job_id : params.id
   })
 
+  console.log(data)
+
   const tabs = ["About" , "Qualififcation" , "Responsibilities"]
 
-  connst [avtiveTab , setAvitveTab] = useState(tabs[0])
+  const [activeTab , setAvitveTab] = useState(tabs[0])
 
   const [refreshing , setRefreshing] = useState(false)
 
   const onRefresh = ()=>{}
+
+  const dispalyAvtivContetn = ()=>{
+    switch (activeTab) {
+      case "About":
+        return <JobAbout
+        info = {data[0].job_description ?? 'No DATA provided'}
+        />
+      
+      case "Qualififcation":
+        return <Specifics
+        title = "Qualififcation"
+        points = {data[0].job_highlights?.Qualifications ?? ['N/A']}
+        
+        />
+
+      case  "Responsibilities":
+        return <Specifics
+        title = "Responsibilities"
+        points = {data[0].job_highlights?.Benefites ?? ['N/A']}
+        
+        />
+        break;
+    
+      default:
+        break;
+    }
+  }
 
   return (
     
@@ -55,7 +85,8 @@ const jobDetale = () => {
                   activeTab = {activeTab}
                   setAvitveTab = {setAvitveTab}
                 />
-
+                {dispalyAvtivContetn()}
+                
 
             </View>  }
             
